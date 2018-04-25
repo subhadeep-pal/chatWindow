@@ -10,4 +10,6 @@ import UIKit
 
 class ChatCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var textView: UITextView!
+    
 }

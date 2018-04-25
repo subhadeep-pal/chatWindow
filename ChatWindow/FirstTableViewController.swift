@@ -18,8 +18,10 @@ class FirstTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        setupInputView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,23 +31,22 @@ class FirstTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return Message.messages.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
 
         // Configure the cell...
-
+        cell.contentView.backgroundColor = UIColor.brown
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -91,5 +92,16 @@ class FirstTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func setupInputView() {
+        let chatBoxView = Bundle.main.loadNibNamed("ChatBoxView", owner: self, options: nil)?.first as! ChatBoxView
+        chatBoxView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(chatBoxView)
+        
+        chatBoxView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        chatBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        chatBoxView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+    }
 
 }

@@ -14,13 +14,24 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupInputView()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func setupInputView() {
+        let chatBoxView = Bundle.main.loadNibNamed("ChatBoxView", owner: self, options: nil)?.first as! ChatBoxView
+        chatBoxView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(chatBoxView)
+        
+        chatBoxView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        chatBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        chatBoxView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+    }
 
     /*
     // MARK: - Navigation
@@ -32,4 +43,20 @@ class SecondViewController: UIViewController {
     }
     */
 
+}
+
+extension SecondViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Message.messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
+        cell.contentView.backgroundColor = UIColor.green
+        return cell
+    }
 }

@@ -18,15 +18,27 @@ class ChatCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        // Register cell classes
+//        self.collectionView!.register(ChatCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        setupInputView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupInputView() {
+        let chatBoxView = Bundle.main.loadNibNamed("ChatBoxView", owner: self, options: nil)?.first as! ChatBoxView
+        chatBoxView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(chatBoxView)
+        
+        chatBoxView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        chatBoxView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        chatBoxView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }
 
     /*
@@ -53,10 +65,11 @@ class ChatCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ChatCollectionViewCell
     
         // Configure the cell
-        cell.backgroundColor = UIColor.yellow
+        
+        cell.textView.text = Message.messages[indexPath.row]
         return cell
     }
 
@@ -95,6 +108,6 @@ class ChatCollectionViewController: UICollectionViewController {
 
 extension ChatCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.height, height: 80)
+        return CGSize(width: view.frame.width, height: 80)
     }
 }

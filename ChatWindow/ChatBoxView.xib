@@ -1,18 +1,60 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChatBoxView" customModule="ChatWindow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Enter a message..." translatesAutoresizingMaskIntoConstraints="NO" id="TWV-Mq-W21">
+                    <rect key="frame" x="8" y="8" width="271" height="46"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="M6x-iB-B3t"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbN-8z-Wui">
+                    <rect key="frame" x="287" y="16" width="80" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="Kih-Us-1dv"/>
+                    </constraints>
+                    <state key="normal" title="SEND"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJ4-IS-Ivk">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="lC3-81-Wd5"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="lJ4-IS-Ivk" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="1lu-iR-fEv"/>
+                <constraint firstItem="lJ4-IS-Ivk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="2dP-mu-gyW"/>
+                <constraint firstItem="TWV-Mq-W21" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="3k1-cB-38M"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YbN-8z-Wui" secondAttribute="trailing" constant="8" id="Aib-aI-rr3"/>
+                <constraint firstItem="YbN-8z-Wui" firstAttribute="centerY" secondItem="TWV-Mq-W21" secondAttribute="centerY" id="LLc-NT-PGM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="TWV-Mq-W21" secondAttribute="bottom" constant="8" id="O9w-Es-vi1"/>
+                <constraint firstItem="YbN-8z-Wui" firstAttribute="leading" secondItem="TWV-Mq-W21" secondAttribute="trailing" constant="8" id="hQI-dz-1eX"/>
+                <constraint firstItem="TWV-Mq-W21" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="hhn-jF-HBX"/>
+                <constraint firstItem="lJ4-IS-Ivk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="mPV-Jw-CkF"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="-249"/>
         </view>
     </objects>
 </document>
